@@ -2,6 +2,7 @@ const createGameboard = (shipsConfig) => {
   const board = Array.from({ length: 10 }, () => Array(10).fill(null));
   const missedAttacks = [];
   const ships = [];
+  const attackedCells = [];
 
   const placeShip = (ship, coords, orientation) => {
     const [row, col] = coords;
@@ -52,6 +53,7 @@ const createGameboard = (shipsConfig) => {
 
     if (ship) {
       ship.hit();
+      attackedCells.push(coords);
     } else {
       missedAttacks.push(coords);
     }
@@ -61,7 +63,14 @@ const createGameboard = (shipsConfig) => {
     return ships.every((ship) => ship.isSunk());
   };
 
-  return { board, placeShip, missedAttacks, receiveAttack, allSunk };
+  return {
+    board,
+    placeShip,
+    missedAttacks,
+    receiveAttack,
+    allSunk,
+    attackedCells,
+  };
 };
 
 export default createGameboard;

@@ -29,15 +29,15 @@ const computerBoard = document.getElementById("computer-board");
 
 const renderGameboard = (gameboard, boardElement) => {
   // Clear the board element
+  const checker = boardElement;
   boardElement.innerHTML = "";
-
   // Render the gameboard on the board element
   gameboard.board.forEach((row, rowIndex) => {
     row.forEach((cell, colIndex) => {
       const cellElement = document.createElement("div");
       cellElement.classList.add("cell");
 
-      if (cell) {
+      if (cell && gameboard !== computerGameboard) {
         cellElement.classList.add("ship");
       }
 
@@ -63,6 +63,12 @@ const renderGameboard = (gameboard, boardElement) => {
     const [row, col] = coords;
     const cellElement = boardElement.children[row * 10 + col];
     cellElement.classList.add("missed");
+  });
+  gameboard.attackedCells.forEach((coords) => {
+    const [row, col] = coords;
+    const cellElement = boardElement.children[row * 10 + col];
+    cellElement.classList.remove("ship");
+    cellElement.classList.add("ship-hit");
   });
 };
 

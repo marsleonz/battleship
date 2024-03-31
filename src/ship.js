@@ -6,7 +6,7 @@ function createShip(length) {
       this.hits++;
     },
     isSunk() {
-      return this.hits === this.length;
+      return this.hits >= this.length;
     },
   };
 }

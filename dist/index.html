@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Battleship</title>
+    <script src="bundle.js" defer></script>
+    <style>
+      .board {
+        display: inline-grid;
+        grid-template-columns: repeat(10, 30px);
+        grid-template-rows: repeat(10, 30px);
+        gap: 1px;
+      }
+
+      .cell {
+        background-color: lightgray;
+        border: 1px solid black;
+      }
+
+      .ship {
+        background-color: navy;
+      }
+      .ship-cell {
+        background-color: navy;
+      }
+      .ship-hit {
+        background-color: greenyellow;
+      }
+      .missed {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Battleship</h1>
+    <div id="player-board" class="board"></div>
+    <div id="computer-board" class="board"></div>
+  </body>
+</html>
